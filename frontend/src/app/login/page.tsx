@@ -19,6 +19,7 @@ export default function LoginPage() {
 
         try {
             const baseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000') + '/api/v1';
+            console.log("Base URL: " + baseUrl)
 
             const response = await fetch(`${baseUrl}/auth/login`, {
                 method: 'POST',
