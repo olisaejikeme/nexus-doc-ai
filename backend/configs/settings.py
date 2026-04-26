@@ -50,6 +50,7 @@ class Settings(BaseSettings):
     
     pinecone_api_key: str = Field(..., alias="PINECONE_API_KEY")
     groq_api_key: str = Field(..., alias="GROQ_API_KEY")
+    huggingface_api_token: str = Field(..., alias="HUGGINGFACE_API_TOKEN")
 
 # Load settings
 settings = Settings()
