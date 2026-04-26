@@ -3,9 +3,9 @@
 NexusDoc AI is a **Retrieval-Augmented Generation (RAG)** platform that allows users to upload documents (PDF/DOCX), index them into a high-performance vector database, and have context-aware conversations with their data.
 
 ## Live Links
-* **Frontend (Vercel):** [https://nexus-doc-frontend.vercel.app](https://nexus-doc-frontend.vercel.app)
-* **Backend API (Render):** [https://nexus-doc-api.onrender.com](https://nexus-doc-api.onrender.com)
-* **API Documentation:** [https://nexus-doc-api.onrender.com/docs](https://nexus-doc-api.onrender.com/docs)
+* **Frontend (Vercel):** [https://nexus-doc-frontend.vercel.app](https://nexus-doc-ai.vercel.app)
+* **Backend API (Render):** [https://nexus-doc-api.onrender.com](https://nexus-doc-ai.onrender.com)
+* **API Documentation:** [https://nexus-doc-api.onrender.com/docs](https://nexus-doc-ai.onrender.com/docs)
 
 > **Note on Demo Performance:** This project is hosted on **Free Tier** services (Render/Neon). 
 > * **Cold Starts:** The backend may take **50-90 seconds** to "spin up" after a period of inactivity.
