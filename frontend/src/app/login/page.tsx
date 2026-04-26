@@ -49,8 +49,8 @@ export default function LoginPage() {
                 <ThemeToggle />
             </div>
 
-            {/* LEFT SIDE - Dark background always stays dark */}
-            <div className="hidden lg:flex flex-1 bg-[#030712] p-16 flex-col justify-between relative overflow-hidden">
+            {/* LEFT SIDE - Hidden on mobile */}
+            <div className="hidden lg:flex flex-1 bg-[#030712] p-8 lg:p-16 flex-col justify-between relative overflow-hidden">
                 <BrandLogo />
 
                 <div className="max-w-xl space-y-6 relative z-10">
@@ -58,32 +58,32 @@ export default function LoginPage() {
                         Enterprise Intelligence
                     </span>
 
-                    <h1 className="text-5xl font-bold text-white leading-tight">
+                    <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight">
                         Your Company's Knowledge, Instantly Accessible
                     </h1>
 
-                    <p className="text-slate-400 text-base leading-relaxed">
+                    <p className="text-slate-400 text-sm lg:text-base leading-relaxed">
                         Leverage RAG-powered document intelligence to transform fragmented data into precise, actionable enterprise operations.
                     </p>
                 </div>
 
-                <div className="flex gap-12 border-t border-slate-800/60 pt-8 relative z-10">
+                <div className="flex gap-8 lg:gap-12 border-t border-slate-800/60 pt-6 lg:pt-8 relative z-10">
                     <div>
-                        <div className="text-white text-2xl font-bold">99.9%</div>
+                        <div className="text-white text-xl lg:text-2xl font-bold">99.9%</div>
                         <div className="text-slate-500 uppercase text-[10px] font-bold tracking-wider">
                             Extraction Accuracy
                         </div>
                     </div>
 
                     <div>
-                        <div className="text-white text-2xl font-bold">RAG-Native</div>
+                        <div className="text-white text-xl lg:text-2xl font-bold">RAG-Native</div>
                         <div className="text-slate-500 uppercase text-[10px] font-bold tracking-wider">
                             Architecture
                         </div>
                     </div>
 
                     <div>
-                        <div className="text-white text-2xl font-bold">SOC2</div>
+                        <div className="text-white text-xl lg:text-2xl font-bold">SOC2</div>
                         <div className="text-slate-500 uppercase text-[10px] font-bold tracking-wider">
                             Compliance
                         </div>
@@ -93,21 +93,26 @@ export default function LoginPage() {
                 <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
             </div>
 
-            {/* RIGHT SIDE - This will toggle between light/dark mode */}
-            <div className="w-full lg:w-[550px] p-12 lg:p-24 flex flex-col justify-between bg-white dark:bg-slate-950 transition-colors duration-300">
-                <div className="my-auto space-y-10">
+            {/* RIGHT SIDE - Full width on mobile */}
+            <div className="w-full lg:w-[550px] p-6 md:p-12 lg:p-24 flex flex-col justify-between bg-white dark:bg-slate-950 transition-colors duration-300">
+                <div className="my-auto space-y-6 md:space-y-10">
+                    {/* Logo for mobile */}
+                    <div className="lg:hidden flex justify-center mb-6">
+                        <BrandLogo />
+                    </div>
+
                     {/* Header */}
                     <div>
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                        <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white text-center lg:text-left">
                             Welcome back
                         </h2>
-                        <p className="text-slate-600 dark:text-slate-400 mt-2">
+                        <p className="text-slate-600 dark:text-slate-400 mt-2 text-center lg:text-left text-sm md:text-base">
                             Enter your credentials to access your dashboard.
                         </p>
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-5" onSubmit={handleLogin}>
+                    <form className="space-y-4 md:space-y-5" onSubmit={handleLogin}>
                         <div className="space-y-2">
                             <label className="text-xs font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">
                                 Email Address
@@ -118,7 +123,7 @@ export default function LoginPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-slate-900 dark:text-white bg-white dark:bg-slate-900 transition-all"
+                                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-slate-900 dark:text-white bg-white dark:bg-slate-900 transition-all text-sm md:text-base"
                             />
                         </div>
 
@@ -132,7 +137,7 @@ export default function LoginPage() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
-                                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-slate-900 dark:text-white bg-white dark:bg-slate-900 transition-all"
+                                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none text-slate-900 dark:text-white bg-white dark:bg-slate-900 transition-all text-sm md:text-base"
                             />
                         </div>
 
@@ -167,8 +172,8 @@ export default function LoginPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex justify-between text-slate-500 dark:text-slate-500 text-[11px] font-medium border-t border-slate-200 dark:border-slate-800 pt-8 mt-8">
-                    <div className="space-x-4">
+                <div className="flex flex-col md:flex-row justify-between gap-4 text-slate-500 dark:text-slate-500 text-[11px] font-medium border-t border-slate-200 dark:border-slate-800 pt-6 md:pt-8 mt-6 md:mt-8">
+                    <div className="space-x-4 text-center md:text-left">
                         <Link href="#" className="hover:text-slate-700 dark:hover:text-slate-300 transition-colors">
                             Privacy
                         </Link>
@@ -176,7 +181,7 @@ export default function LoginPage() {
                             Terms
                         </Link>
                     </div>
-                    <span>© 2026 NexusDoc AI</span>
+                    <span className="text-center md:text-right">© 2026 NexusDoc AI</span>
                 </div>
             </div>
         </div>

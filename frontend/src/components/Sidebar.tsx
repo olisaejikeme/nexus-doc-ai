@@ -1,31 +1,64 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Sidebar = () => {
     const router = useRouter();
+    const pathname = usePathname();
+    const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        // Close sidebar on route change on mobile
+        if (isMobile) {
+            setIsMobileOpen(false);
+        }
+    }, [pathname, isMobile]);
 
     const handleLogout = () => {
-        // 1. Clear the cookie by setting expiry to the past
         document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-
-        // 2. Force a hard redirect to the login page
         router.push('/login');
     };
 
-    return (
-        <aside className="w-64 bg-slate-900 h-screen text-white flex flex-col border-r border-slate-800">
-            <div className="p-6 text-2xl font-bold text-blue-500">
-                NexusDoc
+    const sidebarContent = (
+        <aside className={`w-64 bg-slate-900 h-screen text-white flex flex-col border-r border-slate-800 transition-transform duration-300 ${isMobile ? (isMobileOpen ? 'fixed left-0 top-0 z-50 shadow-2xl' : 'fixed left-0 top-0 -translate-x-full') : 'relative'
+            }`}>
+            <div className="p-6 flex justify-between items-center">
+                <span className="text-2xl font-bold text-blue-500">NexusDoc</span>
+                {isMobile && (
+                    <button
+                        onClick={() => setIsMobileOpen(false)}
+                        className="text-slate-400 hover:text-white"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                )}
             </div>
 
             <nav className="flex-1 px-4 space-y-2">
-                <Link href="/" className="block px-4 py-2 rounded hover:bg-slate-800 transition">
+                <Link
+                    href="/"
+                    className={`block px-4 py-2 rounded transition ${pathname === '/' ? 'bg-slate-800 text-blue-500' : 'hover:bg-slate-800'}`}
+                >
                     Document Library
                 </Link>
-                <Link href="/chat" className="block px-4 py-2 rounded hover:bg-slate-800 transition">
+                <Link
+                    href="/chat"
+                    className={`block px-4 py-2 rounded transition ${pathname === '/chat' ? 'bg-slate-800 text-blue-500' : 'hover:bg-slate-800'}`}
+                >
                     Chat
                 </Link>
             </nav>
@@ -45,7 +78,6 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Logout Section */}
             <div className="p-4 border-t border-slate-800 space-y-4">
                 <button
                     onClick={handleLogout}
@@ -61,6 +93,28 @@ const Sidebar = () => {
                 </div>
             </div>
         </aside>
+    );
+
+    return (
+        <>
+            {isMobile && isMobileOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 z-40"
+                    onClick={() => setIsMobileOpen(false)}
+                />
+            )}
+            {sidebarContent}
+            {isMobile && !isMobileOpen && (
+                <button
+                    onClick={() => setIsMobileOpen(true)}
+                    className="fixed bottom-4 left-4 z-30 bg-blue-600 text-white p-3 rounded-full shadow-lg md:hidden"
+                >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            )}
+        </>
     );
 };
 
