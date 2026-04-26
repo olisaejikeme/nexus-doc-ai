@@ -3,7 +3,7 @@ import os
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
@@ -11,7 +11,10 @@ from configs.settings import settings
 
 class AIService:
     def __init__(self):
-        self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        self.embeddings = HuggingFaceInferenceAPIEmbeddings(
+            api_key=settings.huggingface_api_token,
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
         self.llm = ChatGroq(
             temperature=0.1,
             model_name="llama-3.1-8b-instant", 
