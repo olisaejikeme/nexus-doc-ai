@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+// The function name is now 'proxy'
+export function proxy(request: NextRequest) {
     const token = request.cookies.get('token');
     const isLoginPage = request.nextUrl.pathname === '/login';
 
@@ -18,9 +19,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
 }
 
-// Optimized matcher: 
-// Protects the root, chat, and other dashboard pages 
-// but skips internal Next.js files and static assets
+// The 'config' object and matcher remain unchanged
 export const config = {
     matcher: [
         '/',
