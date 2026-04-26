@@ -22,8 +22,7 @@ cloudinary.config(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    if settings.environment == "development":
-        seed()
+    seed()
     yield
 
 app = FastAPI(lifespan=lifespan, title="NexusDoc API")
