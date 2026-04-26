@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     )
 
     # CORS
-    allowed_origins: List[str] = ["http://localhost:5173", "http://localhost:3000", "https://jobtrackr-frontend-tan.vercel.app"]
+    allowed_origins: List[str] = ["http://localhost:5173", "http://localhost:3000", "https://nexus-doc-ai.vercel.app"]
 
     app_name: str = "Nexus AI"
     environment: str = Field(default="development", alias="ENVIRONMENT")
