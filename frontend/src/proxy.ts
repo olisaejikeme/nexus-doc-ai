@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
-    // 2. If already logged in and trying to go to Login -> Redirect to Dashboard
+    // 2. If already logged in and trying to go to Login -> Redirect to Dashboardclear
     if (token && isLoginPage) {
         return NextResponse.redirect(new URL('/', request.url));
     }
