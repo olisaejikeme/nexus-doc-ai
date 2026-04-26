@@ -98,7 +98,10 @@ export default function LoginPage() {
                 <div className="my-auto space-y-6 md:space-y-10">
                     {/* Logo for mobile */}
                     <div className="lg:hidden flex justify-center mb-6">
-                        <BrandLogo />
+                        <div className="flex items-center gap-3">
+                            <div className="w-6 h-6 bg-blue-600 rounded shadow-lg shadow-blue-500/20" />
+                            <span className="text-xl font-semibold text-slate-900 dark:text-white tracking-tight">NexusDoc</span>
+                        </div>
                     </div>
 
                     {/* Header */}
