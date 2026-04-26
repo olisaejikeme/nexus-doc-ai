@@ -12,6 +12,7 @@ dependencies = [
     "langchain>=1.2.15",
     "langchain-community>=0.4.1",
     "langchain-groq>=1.1.2",
+    "langchain-huggingface>=0.0.3",
     "langchain-pinecone>=0.2.13",
     "passlib[bcrypt]>=1.7.4",
     "bcrypt==3.2.2",
