@@ -1,25 +1,13 @@
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import { Toaster } from 'react-hot-toast';
 import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex h-screen bg-slate-50 text-slate-900">
-        {/* The Sidebar stays fixed on the left */}
-        <Sidebar />
-
-        {/* The Right side contains the Header and the Page Content */}
-        <div className="flex-1 flex flex-col">
-          <Header />
-          <main className="flex-1 overflow-y-auto p-8">
-            {children}
-          </main>
-        </div>
+      <body>
+        {/* This sits at the top level and listens for toast commands */}
+        <Toaster position="top-right" reverseOrder={false} />
+        {children}
       </body>
     </html>
   );
