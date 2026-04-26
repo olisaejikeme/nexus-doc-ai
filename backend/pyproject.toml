@@ -14,6 +14,7 @@ dependencies = [
     "langchain-groq>=1.1.2",
     "langchain-pinecone>=0.2.13",
     "passlib[bcrypt]>=1.7.4",
+    "bcrypt==3.2.2",
     "pinecone-client>=6.0.0",
     "psycopg2-binary>=2.9.12",
     "pydantic-settings>=2.14.0",
