@@ -39,3 +39,23 @@ body {
   background: rgba(156, 163, 175, 0.3);
   border-radius: 10px;
 }
+
+/* Mobile responsive utilities */
+@layer utilities {
+  .sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-closed {
+    transform: translateX(-100%);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+    }
+  }
+}
